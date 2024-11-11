@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Character Selector</title>
+    <title>Michael Saylor Character Generator</title>
     <style>
         /* Basic styles */
         body {
@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-    <h1>Meme Character Selector</h1>
+    <h1>Michael Saylor Character Generator</h1>
     
     <!-- Character Preview -->
     <img id="character-preview" src="default.png" alt="Selected Character">
@@ -38,7 +38,7 @@
         <label for="image-select">Choose your character:</label>
         <select id="image-select">
             <option value="default.png">Default</option>
-            <option value="alien.png">Alien Michael Saylor</option>
+            <option value="alien.png">Character 1</option>
             <option value="character2.png">Character 2</option>
             <option value="character3.png">Character 3</option>
             <!-- Add options for all 15 images -->
@@ -49,12 +49,16 @@
     <button id="download-button">Download Image</button>
     
     <script>
-        // Update the character preview when a new image is selected
         const imageSelect = document.getElementById('image-select');
         const characterPreview = document.getElementById('character-preview');
         
+        // Update the character preview when a new image is selected
         imageSelect.addEventListener('change', function() {
-            characterPreview.src = 'images/' + this.value;
+            const selectedImage = 'images/' + this.value;
+            characterPreview.src = selectedImage;
+            characterPreview.onload = function() {
+                console.log("Image loaded successfully:", selectedImage);
+            };
         });
 
         // Download the currently displayed image when button is clicked
