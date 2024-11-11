@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Character Generator</title>
+    <title>Meme Character Selector</title>
     <style>
         /* Basic styles */
         body {
@@ -14,74 +14,55 @@
             background-color: #f3f3f3;
         }
         #character-preview {
-            position: relative;
-            width: 200px;
-            height: 400px;
-            margin-bottom: 20px;
-        }
-        .layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            margin: 20px 0;
+            width: 300px;
+            height: auto;
         }
         .selector {
             margin-bottom: 10px;
         }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
-    <h1>Meme Character Generator</h1>
+    <h1>Meme Character Selector</h1>
     
-    <div id="character-preview">
-        <img id="head" class="layer" src="images/head/default.png" alt="Head">
-        <img id="body" class="layer" src="images/body/default.png" alt="Body">
-        <img id="legs" class="layer" src="images/legs/default.png" alt="Legs">
-    </div>
+    <!-- Character Preview -->
+    <img id="character-preview" src="images/default.png" alt="Selected Character">
     
+    <!-- Image Selector -->
     <div class="selector">
-        <label for="head-select">Head:</label>
-        <select id="head-select">
+        <label for="image-select">Choose your character:</label>
+        <select id="image-select">
             <option value="default.png">Default</option>
-            <option value="smiling.png">Smiling</option>
-            <option value="angry.png">Angry</option>
-            <!-- Add more options as needed -->
+            <option value="alien.png">Alien Michael Saylor</option>
+            <option value="character2.png">Character 2</option>
+            <option value="character3.png">Character 3</option>
+            <!-- Add options for all 15 images -->
         </select>
     </div>
     
-    <div class="selector">
-        <label for="body-select">Body:</label>
-        <select id="body-select">
-            <option value="default.png">Default</option>
-            <option value="superhero.png">Superhero</option>
-            <option value="suit.png">Suit</option>
-            <!-- Add more options as needed -->
-        </select>
-    </div>
+    <!-- Download Button -->
+    <button id="download-button">Download Image</button>
     
-    <div class="selector">
-        <label for="legs-select">Legs:</label>
-        <select id="legs-select">
-            <option value="default.png">Default</option>
-            <option value="shorts.png">Shorts</option>
-            <option value="pants.png">Pants</option>
-            <!-- Add more options as needed -->
-        </select>
-    </div>
-
     <script>
-        // JavaScript to change images based on selection
-        document.getElementById('head-select').addEventListener('change', function() {
-            document.getElementById('head').src = 'images/head/' + this.value;
+        // Update the character preview when a new image is selected
+        const imageSelect = document.getElementById('image-select');
+        const characterPreview = document.getElementById('character-preview');
+        
+        imageSelect.addEventListener('change', function() {
+            characterPreview.src = 'images/' + this.value;
         });
 
-        document.getElementById('body-select').addEventListener('change', function() {
-            document.getElementById('body').src = 'images/body/' + this.value;
-        });
-
-        document.getElementById('legs-select').addEventListener('change', function() {
-            document.getElementById('legs').src = 'images/legs/' + this.value;
+        // Download the currently displayed image when button is clicked
+        document.getElementById('download-button').addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = characterPreview.src;
+            link.download = imageSelect.value;
+            link.click();
         });
     </script>
 </body>
