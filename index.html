@@ -82,6 +82,34 @@
             font-size: 24px;
             margin-bottom: 10px;
         }
+		
+	/* Enhance the select dropdown styling */
+#image-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Comic Sans MS", cursive, sans-serif; /* Fun and quirky font */
+    border: 2px solid #df3741;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus effect for better interactivity */
+#image-select:focus {
+    border-color: #dd7f84;
+    box-shadow: 0 0 8px rgba(221, 127, 132, 0.5);
+    outline: none;
+}
+
+/* Style the options (modern browsers apply styles when open) */
+#image-select option {
+    font-family: "Arial", sans-serif; /* Fallback for better readability */
+    font-size: 14px;
+    padding: 5px;
+}
     </style>
 </head>
 <body>
